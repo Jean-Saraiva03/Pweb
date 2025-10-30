@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var aluno1 = new Object(); //criação de objetos comum
+        aluno1.ra = "000001234";
+        aluno1.nome = "Matheus";
+        alert(`ra=${aluno1.ra} nome=${aluno1.nome}`);
+
+        var aluno2 = {};
+        aluno2.ra = "1234"
+        aluno2["nome"] = "Paulo";
+        alert("ra=" + aluno2.ra + "nome=" + aluno2.nome)
+
+        var aluno3 = {
+            ra: "1234567",
+            nome: "Arthur",
+        }
+        alert("ra = " + aluno3.ra + " nome = " + aluno3.nome);
+
+        function Aluno(ra, nome){
+            this.ra = ra;
+            this.nome = nome;
+            this.MostraDados = function() {
+                return "ra = " + this.ra + "nome = " + this.nome;
+            }
+        }
+
+        var aluno4 = new Aluno("123", "Vinicius");
+        alert(aluno4.MostraDados());
+        alert(aluno4.nome);
+
+
+
+
+
+        function Aluno5() {
+            var ra;
+            var nome;
+            this.setRa = function(value) {
+                this.ra = value;
+            }
+            this.getRa = function() {
+                return this.ra;
+            }
+            this.setNome = function(value) {
+                this.nome = value;
+            }
+            this.getNome = function() {
+                return this.nome;
+            }
+
+        }
+
+        var aaluno5 = new Aluno5();
+        aaluno5.setNome("Don Bento");
+        aaluno5.setRa("66666666");
+        alert("Nome = " + aaluno5.getNome() + "RA = " + aaluno5.getRa() );
+
+
+        function AlunoADS(){
+            var numLab;
+            this.setnumLab = function(value) {
+                this.numLab = value;
+            }
+            this.getnumLab = function(){
+                return this.numLab;
+            }
+            
+            
+            }
+        AlunoADS.prototype = new Aluno5();
+        var aluno7 = new AlunoADS();
+        aluno7.setNome("Rapaz");
+        aluno7.setRa("25000000000");
+        aluno7.setnumLab(9);
+        alert(aluno7.getNome() + " " + aluno7.getnumLab());
+
+
+        class Aluno9 {
+            constructor(){
+                this._ra;
+                this._nome;
+            }
+
+            setNome(value) {
+                this._nome = value;
+            }
+            getNome() {
+                return this._nome;
+            }
+            setRa(value){
+                this._ra = value;
+            }
+            getRa(){
+                return this._ra;
+            }
+
+
+        }
+        
+        var objAluno = new Aluno9();
+        objAluno.setNome("William");
+        objAluno.setRa('123');
+        alert(`nome=${objAluno.getNome()} ra=${objAluno.getRa()}`);
+
+
+        class AlunoADS1 extends Aluno1 {
+            constructor(){
+                super();
+                this._NumLab;
+            }
+
+            setNumLab(value){
+                this._NumLab = value;
+            }
+            getNumLab(){
+                return this._NumLab;
+            }
+        }
+
+        var objAlunoADS = new AlunoADS1();
+        objAlunoADS.setNome("Edinson Cavani");
+        objAlunoADS.setRa("1999999");
+        objAlunoADS.setNumLab(6);
+        alert(`nome=${objAlunoADS.getNome()} ra=${objAlunoADS.getRa()} numlab=${objAlunoADS.getNumLab()}`);
+
+    </script>
+</body>
+</html>
